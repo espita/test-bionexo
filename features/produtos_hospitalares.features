@@ -1,0 +1,25 @@
+#language: pt
+Funcionalidade: Cadastro de produtos hospitalares
+  Para hospitais cadastrar medicamentos e materiais medicos
+  Eu como hospital quero cadastrar Medicamentos e Materiais Médicos para futuras compras.
+
+  Contexto: possibilidade de acessar o sistema
+      Dado que eu logo no sistema
+
+  Cenario: Validar campos obrigatórios
+      Dado que eu acesse a tela de cadastro de produtos
+      E Eu preencho o campo Nome
+      E Eu clicar no botão criar produto
+      Então Eu vizualizo a mensagem de erro
+
+  Esquema do Cenario: Cadastrar um produtos
+      Dado que eu acesse a tela de cadastro de produtos
+      E Eu preenho os campos obrigatórios "<nome>", "<codigo>", "<fabricante>", "<detalhes>", "<preco>"
+      E Eu selecionar tipo "<tipo>"
+      E Eu selecionar status "<status>"
+      E Eu clicar no botão criar produto
+      Então O Produto é cadastrado com sucesso
+
+  Exemplos:
+      |nome                     |codigo   |fabricante  |detalhes                                      |preco      |tipo               |status     |
+      |  Medidor de colesterol  |   066   |   Luna     |  Trata-se de um equipamento básico de coleta |  150,00   |Material Médico    |  Ativo    |
