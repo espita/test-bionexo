@@ -28,7 +28,7 @@ Então("Eu vizualizo as mensagens de erro {string}") do |mensagem|
   end
 end
 
-Dado("Eu preenho os campos obrigatórios {string}, {string}, {string}, {string}") do |nome, fabricante, detalhes, preco|
+Dado("Eu preencho os campos obrigatórios {string}, {string}, {string}, {string}") do |nome, fabricante, detalhes, preco|
   @preencher_nome = Produtos.new
   @preencher_nome.preencher_dados("name",nome)
   @preencher_nome.preencher_dados("manufacturer",fabricante)
@@ -40,6 +40,11 @@ Dado("Eu crio um novo codigo") do
   @preencher_nome = Produtos.new
   code = SecureRandom.hex(10)
   @preencher_nome.preencher_dados("code",code)
+end
+
+Dado("Eu preencho o campo código com dado existente") do
+  @preencher_nome = Produtos.new
+  @preencher_nome.preencher_dados("code",'066')
 end
 
 # mat, med

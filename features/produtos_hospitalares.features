@@ -33,16 +33,33 @@ Funcionalidade: Cadastro de produtos hospitalares
           |manufacturer  |uniqmed                           |Nome é um campo obrigatório,Código é um campo obrigatório,Preço é um campo obrigatório |
           |price         | 99.9                             |Nome é um campo obrigatório,Código é um campo obrigatório                              |
 
+  Esquema do Cenario: Validar código existente
+      Dado que eu acesse a tela de cadastro de produtos
+      E Eu preencho os campos obrigatórios "<nome>", "<fabricante>", "<detalhes>", "<preco>"
+      E Eu preencho o campo código com dado existente
+      E Eu selecionar tipo "mat"
+      E Eu selecionar status "enable"
+      E Eu clicar no botão criar produto
+      Então Eu vizualizo as mensagens de erro "<mensagem>"
+      @codigo_existente
+      Exemplos:
+        |nome                   |fabricante |detalhes                                    |preco  |mensagem                                               |
+        |Medidor de colesterol  |Luna       |Trata-se de um equipamento básico de coleta |150,00 |Message Error,Código Código já existe,Código já existe |
 
   Esquema do Cenario: Cadastrar um produtos
       Dado que eu acesse a tela de cadastro de produtos
       E Eu crio um novo codigo
-      E Eu preenho os campos obrigatórios "<nome>", "<fabricante>", "<detalhes>", "<preco>"
+      E Eu preencho os campos obrigatórios "<nome>", "<fabricante>", "<detalhes>", "<preco>"
       E Eu selecionar tipo "mat"
       E Eu selecionar status "enable"
       E Eu clicar no botão criar produto
       Então O Produto é cadastrado com sucesso
-  @cadastro
-  Exemplos:
-      |nome                     |fabricante  |detalhes                                      |preco      |
-      |  Medidor de colesterol  |   Luna     |  Trata-se de um equipamento básico de coleta |  150,00   |
+      @cadastro
+      Exemplos:
+          |nome                   |fabricante  |detalhes                                                |preco      |
+          |Medidor de colesterol  |Luna        |Trata-se de um equipamento básico de coleta             |150,00     |
+          |Kit medir glicemia     |Oncallplus  |100 Tiras para Medição de Glicemia                      |108,00     |
+          |Aventais descartáveis  |Empramed    |Elaborados com material descartável e totalmente atóxico|25,00      |
+          |Lencol Descartável     |Clean       |Lençol descartável com elástico, branco em TNT          |17,90      |
+          |Travesseiro Grande     |Arktus      |O Travesseiro de Espuma é revestido com courvin.        |34,00      |
+          |Máscara descártavel    |Protdesc    |Fabricado com não tecido 100% Polipropileno (TNT)       |15,00      |
