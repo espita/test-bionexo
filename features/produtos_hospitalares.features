@@ -6,20 +6,43 @@ Funcionalidade: Cadastro de produtos hospitalares
   Contexto: possibilidade de acessar o sistema
       Dado que eu logo no sistema
 
-  Cenario: Validar campos obrigatórios
+  Esquema do Cenario: Validar campos obrigatórios
       Dado que eu acesse a tela de cadastro de produtos
-      E Eu preencho o campo Nome
+      E Eu preencho o campo obrigatório "<campo>" com o "<valor>"
       E Eu clicar no botão criar produto
-      Então Eu vizualizo a mensagem de erro
+      Então Eu não vizualizo a mensagem de erro "<mensagem>"
+      Exemplos:
+          |campo         |valor                             |mensagem                           |
+          |name          |Siringa                           |Nome é um campo obrigatório        |
+          |code          |66                                |Código é um campo obrigatório      |
+          |manufacturer  |uniqmed                           |Fabricante é um campo obrigatório  |
+          |description   |Seringas para insulina com agulha |Detalhe é um campo obrigatório     |
+          |price         | 99.9                             |Preço é um campo obrigatório       |
+
+
+  Esquema do Cenario: Validar mensagens de erros
+      Dado que eu acesse a tela de cadastro de produtos
+      E Eu preencho o campo obrigatório "<campo>" com o "<valor>"
+      E Eu clicar no botão criar produto
+      Então Eu vizualizo as mensagens de erro "<mensagem>"
+      @mensagem_erro
+      Exemplos:
+          |campo         |valor                             |mensagem                                                                               |
+          |name          |Siringa                           |Código é um campo obrigatório,Preço é um campo obrigatório                             |
+          |code          |66                                |Nome é um campo obrigatório,Preço é um campo obrigatório                               |
+          |manufacturer  |uniqmed                           |Nome é um campo obrigatório,Código é um campo obrigatório,Preço é um campo obrigatório |
+          |price         | 99.9                             |Nome é um campo obrigatório,Código é um campo obrigatório                              |
+
 
   Esquema do Cenario: Cadastrar um produtos
       Dado que eu acesse a tela de cadastro de produtos
-      E Eu preenho os campos obrigatórios "<nome>", "<codigo>", "<fabricante>", "<detalhes>", "<preco>"
-      E Eu selecionar tipo "<tipo>"
-      E Eu selecionar status "<status>"
+      E Eu crio um novo codigo
+      E Eu preenho os campos obrigatórios "<nome>", "<fabricante>", "<detalhes>", "<preco>"
+      E Eu selecionar tipo "mat"
+      E Eu selecionar status "enable"
       E Eu clicar no botão criar produto
       Então O Produto é cadastrado com sucesso
-
+  @cadastro
   Exemplos:
-      |nome                     |codigo   |fabricante  |detalhes                                      |preco      |tipo               |status     |
-      |  Medidor de colesterol  |   066   |   Luna     |  Trata-se de um equipamento básico de coleta |  150,00   |Material Médico    |  Ativo    |
+      |nome                     |fabricante  |detalhes                                      |preco      |
+      |  Medidor de colesterol  |   Luna     |  Trata-se de um equipamento básico de coleta |  150,00   |

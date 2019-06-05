@@ -5,6 +5,7 @@ require 'capybara/cucumber'
 require 'pry'
 require 'capybara/dsl'
 require 'selenium-webdriver'
+require 'securerandom'
 
 Capybara.register_driver :chrome do |app|
 	Capybara::Selenium::Driver.new(app, :browser => :chrome)
