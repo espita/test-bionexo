@@ -1,0 +1,29 @@
+#language: pt
+Funcionalidade: Listar produtos hospitalares
+  Para hospitais listar medicamentos e materiais medicos cadastrados
+  Eu como hospital quero editar os produtos previamente cadastrados
+
+  Contexto: possibilidade de acessar o sistema
+      Dado que eu logo no sistema
+
+  @validar_listagem
+  Cenario: Validar informações de listagem de produtos
+    Dado que eu acesse a tela de listar produtos
+    Então devo visualizar as informações principais dos Produtos
+
+  @listar_produtos
+  Cenario: Listar produtos
+    Dado que eu acesse a tela de listar produtos
+    Então eu visualizo a quantidade máxima de 10 registro
+    E eu clicar na link próxima página
+    Então eu visualizo a quantidade máxima de 10 registro
+
+  @editar_produto
+  Cenario: Editar produtos cadastrados
+    Dado que eu acesse a tela de listar produtos
+    E eu clicar em um produto
+    E eu editar os campos do produto
+    E Eu selecionar tipo "mat"
+    E Eu selecionar status "disable"
+    E eu clicar no botão atualizar produtos
+    Então o produto é atualizado com sucesso
