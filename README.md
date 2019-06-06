@@ -1,4 +1,4 @@
-# Mr.Krabs-br
+# Test-Bionexo
 * * *
 #### Information
 Este é o projeto de teste automatizado para um teste da Bionexo. Projetado usando Ruby como linguagem e Cubumber como framework BDD.
