@@ -27,12 +27,11 @@ end
 
 Dado("eu editar os campos do produto") do
   @preencher_nome = Produtos.new
-  @preencher_nome.preencher_dados('name',  'Esfigmomanômetro')
-  @preencher_nome.preencher_dados('manufacturer', 'Accumed')
-  @preencher_nome.preencher_dados('description', 'aparelho de pressão é verificado e aprovado pelo Inmetro')
-  @preencher_nome.preencher_dados('price', '89,00')
-  code = SecureRandom.hex(10)
-  @preencher_nome.preencher_dados('code', code)
+  @preencher_nome.preencher_dados('name',  Faker::FunnyName.name)
+  @preencher_nome.preencher_dados('manufacturer', Faker::Company.industry)
+  @preencher_nome.preencher_dados('description', Faker::ChuckNorris.fact)
+  @preencher_nome.preencher_dados('price', Faker::Number.decimal(2))
+  @preencher_nome.preencher_dados('code', Faker::Number.number(7))
 end
 
 Dado("eu clicar no botão atualizar produtos") do

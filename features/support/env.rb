@@ -6,14 +6,9 @@ require 'pry'
 require 'capybara/dsl'
 require 'selenium-webdriver'
 require 'securerandom'
+require 'faker'
 
 case ENV['BROWSER']
-	when 'pg'
-		# using poltergeist
-		DRIVER = :poltergeist
-		Capybara.register_driver :poltergeist_debug do |app|
-		  Capybara::Poltergeist::Driver.new(app, phantomjs_options: ['--ignore-ssl-errors=yes'])
-		end
 	when 'ff'
 		# using firefox
 		DRIVER = :firefox
